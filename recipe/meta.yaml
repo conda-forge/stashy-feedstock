@@ -1,27 +1,27 @@
 {% set name = "stashy" %}
-{% set version = "0.6" %}
+{% set version = "0.7" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ce7495e3c5b74f475436b7eeffb1c8b7a0fe2508013bde9ae08b1d9d19d75b03
+  sha256: 9965aa18509b7576bbd4b068962d9a9a4828cec8ce22ee5a365ddbcebffa09f5
 
 build:
-  number: 2
-  script: "{{ PYTHON }} -m pip install . -vv"
+  noarch: python
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python
+    - python  =2.7|>=3.5
     - setuptools
   run:
     - decorator >=3.4.0
-    - enum34  # [py<34]
-    - python
+    - python  =2.7|>=3.5
     - requests >=2.5.1
 
 test:
@@ -32,8 +32,7 @@ test:
 about:
   home: http://github.com/RisingOak/stashy
   license: Apache Software
-  license_family: APACHE
-  # https://github.com/cosmin/stashy/pull/114
+  license_family: APACHE  
   license_file: LICENSE
   summary: Python API client for the Atlassian Stash REST API
 
