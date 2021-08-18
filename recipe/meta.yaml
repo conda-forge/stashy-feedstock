@@ -16,12 +16,11 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python  =2.7|>=3.5
     - setuptools
   run:
     - decorator >=3.4.0
-    - enum34  # [py<34]
-    - python
+    - python  =2.7|>=3.5
     - requests >=2.5.1
 
 test:
@@ -32,8 +31,7 @@ test:
 about:
   home: http://github.com/RisingOak/stashy
   license: Apache Software
-  license_family: APACHE
-  # https://github.com/cosmin/stashy/pull/114
+  license_family: APACHE  
   license_file: LICENSE
   summary: Python API client for the Atlassian Stash REST API
 
