@@ -6,25 +6,27 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 9965aa18509b7576bbd4b068962d9a9a4828cec8ce22ee5a365ddbcebffa09f5
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python  =2.7|>=3.5
+    - python {{ python_min }}
     - setuptools
   run:
     - decorator >=3.4.0
-    - python  =2.7|>=3.5
+    - python >={{ python_min }}
     - requests >=2.5.1
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - stashy
     - stashy.admin
